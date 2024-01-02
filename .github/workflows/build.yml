@@ -24,6 +24,7 @@ jobs:
         uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}
+          V: sc
           PACKAGES: librespot
 
       - name: Store packages
