@@ -27,6 +27,10 @@ jobs:
           V: sc
           PACKAGES: librespot
 
+      - name: List outputs
+        run: |
+          find bin
+          
       - name: Store packages
         uses: actions/upload-artifact@v3
         with:
