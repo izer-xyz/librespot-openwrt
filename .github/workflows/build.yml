@@ -25,7 +25,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}
           NO_DEFAULT_FEEDS: 1
-          PACKAGES: bottom
+          PACKAGES: procs
 
       - name: Store packages
         uses: actions/upload-artifact@v2
