@@ -23,15 +23,17 @@ include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 
 define Package/librespot
-  SECTION:=utils
-  CATEGORY:=Utilities
+  SECTION:=sound
+  CATEGORY:=Sound
   TITLE:=Spotify client
   DEPENDS:=$(RUST_ARCH_DEPENDS) +alsa-lib
   URL:=https://github.com/librespot-org/librespot
 endef
 
 define Package/librespot/description
-  Spotify client. 
+  librespot is an open source client library for Spotify. It enables applications to use Spotify's service to control and play music via various backends, and to act as a Spotify Connect receiver. It is an alternative to the official and now deprecated closed-source libspotify. Additionally, it will provide extra features which are not available in the official library.
+  
+  Note: librespot only works with Spotify Premium. This will remain the case. We will not support any features to make librespot compatible with free accounts, such as limited skips and adverts.
 endef
 
 define Package/librespot/conffiles
