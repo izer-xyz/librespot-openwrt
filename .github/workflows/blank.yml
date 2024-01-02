@@ -1,0 +1,25 @@
+name: Compile librespot
+
+on:
+  workflow_dispatch:
+  
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+        
+    - name: Build
+      run: | 
+        docker run --rm -v "$(pwd)"/bin/:/builder/bin -it openwrt/sdk \
+          "./scripts/feeds update package && make defconfig && ./scripts/feeds install tmate && make package/tmate/{clean,compile} -j$(nproc)"
+        ls -lah
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        name: librespot
+        path: librespot
