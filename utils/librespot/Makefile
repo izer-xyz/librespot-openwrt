@@ -4,7 +4,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=procs
+PKG_NAME:=librespot
 PKG_VERSION:=0.14.3
 PKG_RELEASE:=1
 
@@ -22,7 +22,7 @@ PKG_BUILD_PARALLEL:=1
 include $(INCLUDE_DIR)/package.mk
 include ../../lang/rust/rust-package.mk
 
-define Package/procs
+define Package/librespot
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=Procs is feature-rich alternative to the 'ps'
@@ -30,7 +30,7 @@ define Package/procs
   URL:=https://github.com/dalance/procs/
 endef
 
-define Package/procs/description
+define Package/librespot/description
   Procs is a 'ps' command replacement written in Rust, offering 
   enhanced usability and information display. 
   Features include color-coded output, theme auto-detection, advanced
@@ -40,16 +40,16 @@ define Package/procs/description
   a process tree view​​.
 endef
 
-define Package/procs/conffiles
-/etc/procs/procs.toml
+define Package/librespot/conffiles
+/etc/librespot/librespot.toml
 endef
 
-define Package/procs/install
+define Package/librespot/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/etc/procs
-	$(INSTALL_CONF) ./files/etc/procs/procs.toml $(1)/etc/procs/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/librespot
+	$(INSTALL_DIR) $(1)/etc/librespot
+	$(INSTALL_CONF) ./files/etc/librespot/librespot.toml $(1)/etc/librespot/
 endef
 
-$(eval $(call RustBinPackage,procs))
-$(eval $(call BuildPackage,procs))
+$(eval $(call RustBinPackage,librespot))
+$(eval $(call BuildPackage,librespot))
