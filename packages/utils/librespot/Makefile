@@ -37,7 +37,7 @@ define Package/librespot/description
 endef
 
 define Package/librespot/conffiles
-/etc/librespot/librespot.toml
+/etc/config/librespot
 endef
 
 define Package/librespot/install
