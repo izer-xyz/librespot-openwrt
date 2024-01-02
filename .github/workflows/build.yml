@@ -15,7 +15,7 @@ jobs:
         
     - name: Build
       run: | 
-        docker run --rm -v "$(pwd)"/bin/:/builder/bin -it ghcr.io/openwrt/sdk:bcm27xx-bcm2708 \
+        docker run --rm -v "$(pwd)"/bin/:/builder/bin ghcr.io/openwrt/sdk:bcm27xx-bcm2708 \
           "./scripts/feeds update package && make defconfig && ./scripts/feeds install tmate && make package/tmate/{clean,compile} -j$(nproc)"
         ls -lah
         
