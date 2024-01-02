@@ -40,9 +40,9 @@ endef
 
 define Package/librespot/install
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/procs $(1)/usr/bin/librespot
-	$(INSTALL_DIR) $(1)/etc/librespot
-	$(INSTALL_CONF) ./files/etc/librespot/librespot.toml $(1)/etc/librespot/
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/librespot $(1)/usr/bin/librespot
+	$(INSTALL_DIR) $(1)/etc/config/
+	$(INSTALL_CONF) ./files/etc/config/librespot $(1)/etc/config/librespot
 endef
 
 $(eval $(call RustBinPackage,librespot))
