@@ -8,18 +8,27 @@ env:
 
 jobs:
   build:
-
+    name: ${{ matrix.arch }} build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch:
+          - bcm27xx-bcm2708
 
     steps:
-        
-    - name: Build
-      run: | 
-        docker run --rm -t -v "$(pwd)"/bin/:/builder/bin ghcr.io/openwrt/sdk:bcm27xx-bcm2708 \
-          /bin/bash -c "./scripts/feeds update package && make defconfig && ./scripts/feeds install tmate && make package/tmate/{clean,compile} -j$(nproc)"
-        ls -lah
-        
-    - uses: actions/upload-artifact@v3
-      with:
-        name: librespot
-        path: librespot
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Build
+        uses: openwrt/gh-action-sdk@main
+        env:
+          ARCH: ${{ matrix.arch }}
+          PACKAGES: bottom
+
+      - name: Store packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.arch}}-packages
+          path: bin/packages/${{ matrix.arch }}/packages/*.ipk
+          
