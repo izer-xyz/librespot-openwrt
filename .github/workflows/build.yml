@@ -29,11 +29,11 @@ jobs:
 
       - name: List outputs
         run: |
-          find bin
+          find bin/packages
           
       - name: Store packages
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.arch}}-packages
-          path: bin/packages/**/packages/*.ipk
+          path: bin/packages/**/action/*.ipk
           
