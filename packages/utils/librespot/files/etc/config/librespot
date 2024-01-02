@@ -1,0 +1,4 @@
+config librespot 'librespot'
+  option device_name ‘loud %H’
+  option bitrate 160
+  option initial_volume 50
