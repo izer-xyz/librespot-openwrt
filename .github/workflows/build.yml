@@ -24,8 +24,7 @@ jobs:
         uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}
-          NO_DEFAULT_FEEDS: 1
-          PACKAGES: procs
+          PACKAGES: librespot
 
       - name: Store packages
         uses: actions/upload-artifact@v2
