@@ -5,14 +5,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=librespot
-PKG_VERSION:=0.14.3
+PKG_VERSION:=0.4.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/dalance/procs/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=a3012bba984faddcf8da2a72d21eb9a7e9be8d5d86a387d321987743b0080a8c
+PKG_SOURCE_URL:=https://codeload.github.com/librespot-org/librespot/tar.gz/v$(PKG_VERSION)?
+PKG_HASH:=cc8cb81bdbaa5abf366170dec5e6b8c0ecf570a7cb68f04483e9f7eed338ca61
 
-PKG_MAINTAINER:=Facundo Acevedo <facevedo@disroot.org>
+PKG_MAINTAINER:=Peter
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENCE
 
@@ -25,19 +25,13 @@ include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 define Package/librespot
   SECTION:=utils
   CATEGORY:=Utilities
-  TITLE:=Procs is feature-rich alternative to the 'ps'
+  TITLE:=Spotify client
   DEPENDS:=$(RUST_ARCH_DEPENDS) 
-  URL:=https://github.com/dalance/procs/
+  URL:=https://github.com/librespot-org/librespot
 endef
 
 define Package/librespot/description
-  Procs is a 'ps' command replacement written in Rust, offering 
-  enhanced usability and information display. 
-  Features include color-coded output, theme auto-detection, advanced
-  search, and extended process details
-  (TCP/UDP ports, Docker names, I/O throughput).
-  It also supports pager functionality, a 'top'-like watch mode, and
-  a process tree view​​.
+  Spotify client. 
 endef
 
 define Package/librespot/conffiles
