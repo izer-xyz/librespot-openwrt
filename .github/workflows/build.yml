@@ -35,8 +35,8 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ matrix.arch }}-${{ matrix.version }}-${{ github.run_number }}
+          tag_name: ${{ matrix.version }}-${{ matrix.arch }}-${{ github.run_number }}
           body: |
-            Librespot OpenWrt (${{ matrix.version }}) build
+            Librespot OpenWrt build
           files: |
             bin/packages/${{ matrix.arch }}/action/*.ipk
