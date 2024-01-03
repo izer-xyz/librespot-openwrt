@@ -10,7 +10,7 @@ start_service() {
   config_load librespot
   config_get_bool std_out "librespot" log_stdout 1
   config_get_bool std_err "librespot" log_stderr 1
-  config_get device_name "librespot" device_name "(%H)"
+  config_get device_name "librespot" device_name "LouD"
   config_get bitrate "librespot" bitrate 160
   config_get initial_volume "librespot" initial_volume 30
 
