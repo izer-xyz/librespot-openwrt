@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         arch:
-          - bcm27xx-bcm2708
+          - arm_arm1176jzf-s_vfp
 
     steps:
       - uses: actions/checkout@v2
@@ -24,16 +24,17 @@ jobs:
         uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}
-          V: sc
           PACKAGES: librespot
 
       - name: List outputs
         run: |
           find bin/packages
           
-      - name: Store packages
-        uses: actions/upload-artifact@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: ${{ matrix.arch}}-packages
-          path: bin/packages/**/action/*.ipk
-          
+          tag_name: ${{ matrix.arch }}-${{ github.run_number }}
+          body: |
+            Librespot OpenWrt build
+          files: |
+            bin/packages/${{ matrix.arch }}/action/*.ipk
