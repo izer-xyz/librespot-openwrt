@@ -19,6 +19,8 @@ PKG_LICENSE_FILES:=LICENCE
 PKG_BUILD_DEPENDS:=rust/host
 PKG_BUILD_PARALLEL:=1
 
+RUST_PKG_FEATURES:=with-dns-sd
+
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 
@@ -26,7 +28,7 @@ define Package/librespot
   SECTION:=sound
   CATEGORY:=Sound
   TITLE:=Spotify client
-  DEPENDS:=$(RUST_ARCH_DEPENDS) +alsa-lib
+  DEPENDS:=$(RUST_ARCH_DEPENDS) +alsa-lib +avahi
   URL:=https://github.com/librespot-org/librespot
 endef
 
@@ -37,7 +39,8 @@ define Package/librespot/description
 endef
 
 define Package/librespot/conffiles
-/etc/config/librespot
+  /etc/config/librespot
+  /etc/init.d/librespot
 endef
 
 define Package/librespot/install
