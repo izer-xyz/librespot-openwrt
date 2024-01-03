@@ -26,6 +26,7 @@ jobs:
         uses: openwrt/gh-action-sdk@main
         env:
           ARCH: ${{ matrix.arch }}-${{ matrix.version }}
+          V: sc
           PACKAGES: librespot
 
       - name: List outputs
