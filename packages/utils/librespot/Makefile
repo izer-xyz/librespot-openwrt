@@ -47,7 +47,7 @@ define Package/librespot/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/bin/librespot $(1)/usr/bin/librespot
 	$(INSTALL_DIR) $(1)/etc/config/
 	$(INSTALL_CONF) ./files/etc/config/librespot $(1)/etc/config/librespot
-        $(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/librespot.init $(1)/etc/init.d/librespot
 endef
 
