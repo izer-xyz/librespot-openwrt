@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         arch:
-          - aarch64_cortex-a53
+          - arm_arm1176jzf-s_vfp
         version:
           - 23.05.2
 
