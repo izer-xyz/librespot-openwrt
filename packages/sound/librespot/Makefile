@@ -19,7 +19,7 @@ PKG_LICENSE_FILES:=LICENCE
 PKG_BUILD_DEPENDS:=rust/host
 PKG_BUILD_PARALLEL:=1
 
-RUST_PKG_FEATURES:=with-dns-sd
+RUST_PKG_FEATURES:=alsa-backend
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
