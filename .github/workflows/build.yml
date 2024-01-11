@@ -1,4 +1,4 @@
-name: Publish librespot packages
+name: Publish
 
 on:
   workflow_dispatch:
