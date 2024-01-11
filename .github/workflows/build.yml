@@ -1,4 +1,4 @@
-name: Compile librespot
+name: Package librespot
 
 on:
   workflow_dispatch:
@@ -40,7 +40,17 @@ jobs:
         with:
           name: ls-${{ matrix.arch }}
           path: bin/packages/${{ matrix.arch }}/action/*.ipk
-    
+
+  build:
+    name: ${{ matrix.arch }} build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: ipks
+       - name: List outputs
+        run: |
+          find ipks
       #- name: Release
       #  uses: softprops/action-gh-release@v1
       #  with:
