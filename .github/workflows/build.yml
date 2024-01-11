@@ -65,7 +65,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.list.outputs.librespot_version }}-${{ github.event.inputs.openwrt_version }}-${{ github.run_number }}
+          tag_name: v${{ steps.list.outputs.librespot_version }}_${{ github.event.inputs.openwrt_version }}_${{ github.run_number }}
           body: |
             Librespot v${{ steps.list.outputs.librespot_version }} OpenWrt ${{ github.event.inputs.openwrt_version }} build
           files: |
