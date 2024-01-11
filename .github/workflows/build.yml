@@ -27,17 +27,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      #- name: Build
-      #  uses: openwrt/gh-action-sdk@main
-      #  env:
-      #    ARCH: ${{ matrix.arch }}-${{ github.event.inputs.openwrt_version }}
-      #    V: sc
-      #    PACKAGES: librespot
+      - name: Build
+        uses: openwrt/gh-action-sdk@main
+        env:
+          ARCH: ${{ matrix.arch }}-${{ github.event.inputs.openwrt_version }}
+          V: sc
+          PACKAGES: librespot
 
       - name: List outputs
         run: |
-          mkdir -p bin/packages/${{ matrix.arch }}/action
-          touch bin/packages/${{ matrix.arch }}/action/empty_0.0.1-1_${{ matrix.arch }}.ipk
           find bin/packages
 
       - uses: actions/upload-artifact@v4
@@ -46,9 +44,11 @@ jobs:
           path: bin/packages/${{ matrix.arch }}/action/*.ipk
 
   release:
+
     name: Release all packages
     runs-on: ubuntu-latest
     needs: build
+    
     steps:
     
       - uses: actions/download-artifact@v4
