@@ -2,6 +2,12 @@ name: Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      openwrt_version:
+       description: 'OpenWrt version (default: 23.05.2)'
+       default: '23.05.2'
+       required: true
+       type: string
   
 env:
   CARGO_TERM_COLOR: always
@@ -15,8 +21,6 @@ jobs:
         arch:
           - arm_arm1176jzf-s_vfp # RPi Zero
           - aarch64_cortex-a53   # RPi 3+
-        version:
-          - 23.05.2
 
     steps:
       - uses: actions/checkout@v4
@@ -26,14 +30,14 @@ jobs:
       #- name: Build
       #  uses: openwrt/gh-action-sdk@main
       #  env:
-      #    ARCH: ${{ matrix.arch }}-${{ matrix.version }}
+      #    ARCH: ${{ matrix.arch }}-${{ github.event.inputs.openwrt_version }}
       #    V: sc
       #    PACKAGES: librespot
 
       - name: List outputs
         run: |
           mkdir -p bin/packages/${{ matrix.arch }}/action
-          touch bin/packages/${{ matrix.arch }}/action/empty-${{ matrix.arch }}.ipk
+          touch bin/packages/${{ matrix.arch }}/action/empty_0.0.1-1_${{ matrix.arch }}.ipk
           find bin/packages
 
       - uses: actions/upload-artifact@v4
@@ -55,12 +59,13 @@ jobs:
       - name: List outputs
         run: |
           find ipks
+          ls ipks | head -n 1 | awk -F"_" '{ print "librespot_version="$2 }' >> $GITHUB_ENV
     
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ matrix.version }}-${{ matrix.arch }}-${{ github.run_number }}
+          tag_name: v${librespot_version}-${{ github.event.inputs.openwrt_version }}-${{ github.run_number }}
           body: |
-            Librespot OpenWrt build
+            Librespot v${librespot_version} OpenWrt ${{ github.event.inputs.openwrt_version }} build
           files: |
             ipks
