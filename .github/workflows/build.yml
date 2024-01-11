@@ -1,4 +1,4 @@
-name: Package librespot
+name: Publish librespot packages
 
 on:
   workflow_dispatch:
@@ -41,14 +41,14 @@ jobs:
           name: ls-${{ matrix.arch }}
           path: bin/packages/${{ matrix.arch }}/action/*.ipk
 
-  build:
+  release:
     name: ${{ matrix.arch }} build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
           path: ipks
-       - name: List outputs
+      - name: List outputs
         run: |
           find ipks
       #- name: Release
