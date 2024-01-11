@@ -56,11 +56,11 @@ jobs:
         run: |
           find ipks
     
-      #- name: Release
-      #  uses: softprops/action-gh-release@v1
-      #  with:
-      #    tag_name: ${{ matrix.version }}-${{ matrix.arch }}-${{ github.run_number }}
-      #    body: |
-      #      Librespot OpenWrt build
-      #    files: |
-      #      bin/packages/${{ matrix.arch }}/action/*.ipk
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ matrix.version }}-${{ matrix.arch }}-${{ github.run_number }}
+          body: |
+            Librespot OpenWrt build
+          files: |
+            ipks
