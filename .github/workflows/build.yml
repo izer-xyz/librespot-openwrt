@@ -57,15 +57,16 @@ jobs:
           merge-multiple: true
           
       - name: List outputs
+        id: list
         run: |
           find ipks
-          ls ipks | head -n 1 | awk -F"_" '{ print "librespot_version="$2 }' >> $GITHUB_ENV
+          ls ipks | head -n 1 | awk -F"_" '{ print "librespot_version="$2 }' >> "$GITHUB_OUTPUT"
     
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${librespot_version}-${{ github.event.inputs.openwrt_version }}-${{ github.run_number }}
+          tag_name: v${{ steps.list.outputs.librespot_version }}-${{ github.event.inputs.openwrt_version }}-${{ github.run_number }}
           body: |
-            Librespot v${librespot_version} OpenWrt ${{ github.event.inputs.openwrt_version }} build
+            Librespot v${{ steps.list.outputs.librespot_version }} OpenWrt ${{ github.event.inputs.openwrt_version }} build
           files: |
-            ipks
+            ipks/*
