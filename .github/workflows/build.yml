@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       openwrt_version:
-       description: 'OpenWrt version (default: 23.05.2)'
+       description: 'OpenWrt version'
        default: '23.05.2'
        required: true
        type: string
