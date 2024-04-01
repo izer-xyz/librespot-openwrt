@@ -19,8 +19,9 @@ jobs:
     strategy:
       matrix:
         arch:
-          - arm_arm1176jzf-s_vfp # RPi Zero
+          #- arm_arm1176jzf-s_vfp # RPi Zero
           #- aarch64_cortex-a53   # RPi 3+
+          - bcm27xx-bcm2710
 
     steps:
       - uses: actions/checkout@v4
