@@ -28,8 +28,7 @@ define Package/librespot
   SECTION:=sound
   CATEGORY:=Sound
   TITLE:=Spotify client
-  # DEPENDS:=@(TARGET_x86||TARGET_bcm27xx||TARGET_armsr) $(RUST_ARCH_DEPENDS) +alsa-lib 
-  DEPENDS:=@TARGET_sunxi $(RUST_ARCH_DEPENDS) +alsa-lib 
+  DEPENDS:=@(TARGET_x86||TARGET_sunix||TARGET_armsr) $(RUST_ARCH_DEPENDS) +alsa-lib 
   URL:=https://github.com/librespot-org/librespot
 endef
 
