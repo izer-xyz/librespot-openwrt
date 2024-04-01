@@ -5,7 +5,7 @@ on:
     inputs:
       openwrt_version:
        description: 'OpenWrt version'
-       default: '23.05.2'
+       default: '23.05.3'
        required: true
        type: string
   
