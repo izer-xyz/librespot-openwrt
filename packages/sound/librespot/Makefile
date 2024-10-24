@@ -10,7 +10,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/librespot-org/librespot/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=cc8cb81bdbaa5abf366170dec5e6b8c0ecf570a7cb68f04483e9f7eed338ca61
+PKG_HASH:=1af039ba08a2ad0d7b9758e8133229085845d1386018b90b455f011df27ee8df
 
 PKG_MAINTAINER:=Peter
 PKG_LICENSE:=MIT
