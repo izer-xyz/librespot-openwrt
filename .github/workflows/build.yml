@@ -55,6 +55,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: ipks
+          pattern: ls-*
           merge-multiple: true
           
       - name: List outputs
