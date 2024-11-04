@@ -39,6 +39,12 @@ define Package/librespot/description
   Note: librespot only works with Spotify Premium. This will remain the case. We will not support any features to make librespot compatible with free accounts, such as limited skips and adverts.
 endef
 
+define Build/Compile
+	(\
+		cargo install bindgen-cli \
+	)
+endef
+
 define Package/librespot/conffiles
   /etc/config/librespot
 endef
