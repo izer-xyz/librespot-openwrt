@@ -43,6 +43,7 @@ define Build/Compile
 	(\
 		cargo install bindgen-cli \
 	)
+	$(call Build/Compile/Cargo)
 endef
 
 define Package/librespot/conffiles
