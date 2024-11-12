@@ -21,6 +21,7 @@ jobs:
         arch:
           - arm_arm1176jzf-s_vfp # RPi Zero
           - aarch64_cortex-a53   # RPi 3+
+          - aarch64_cortex-a72   # RPi 4
           - arm_cortex-a9_vfpv3-d16
           - arm_cortex-a7_neon-vfpv4
 
