@@ -19,11 +19,23 @@ jobs:
     strategy:
       matrix:
         arch:
-          - arm_arm1176jzf-s_vfp # RPi Zero
-          - aarch64_cortex-a53   # RPi 3+
-          - aarch64_cortex-a72   # RPi 4
+          - arm_arm1176jzf-s_vfp
+          # RPi 1/Zero
+          # https://openwrt.org/docs/techref/instructionset/arm_arm1176jzf-s_vfp
+
+          - aarch64_cortex-a53
+          # RPi 2/3
+          # https://openwrt.org/docs/techref/instructionset/aarch64_cortex-a53
+
+          - aarch64_cortex-a72
+          # RPi 4
+          # https://openwrt.org/docs/techref/instructionset/aarch64_cortex-a72
+
           - arm_cortex-a9_vfpv3-d16
+          # https://openwrt.org/docs/techref/instructionset/arm_cortex-a9_vfpv3-d16
+          
           - arm_cortex-a7_neon-vfpv4
+          # https://openwrt.org/docs/techref/instructionset/arm_cortex-a7_neon-vfpv4
 
     steps:
       - uses: actions/checkout@v4
